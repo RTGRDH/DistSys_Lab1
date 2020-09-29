@@ -15,7 +15,7 @@ public class DBManager {
     private DBManager(){
         try{
             Class.forName("com.mysql.jdbc.Driver").newInstance();
-            con = DriverManager.getConnection("jdbc:mysql://localhost/carl-bernhardhallberg?user=root&password=123");
+            con = DriverManager.getConnection("jdbc:mysql://localhost/carl-bernhardhallberg", "root", "123");
 
         }catch(Exception e) { e.printStackTrace(); }
     }
