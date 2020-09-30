@@ -11,6 +11,6 @@
     <title>Title</title>
 </head>
 <body>
-Test
+Test: <%=db.DBManager.toLow("HEJHEJ")%>
 </body>
 </html>

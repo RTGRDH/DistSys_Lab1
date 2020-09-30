@@ -11,13 +11,22 @@
     <title>Login prompt</title>
 </head>
 <body>
+
 <%
     String userID = request.getParameter("userName");
     String password = request.getParameter("password");
     if(password != null && userID != null)
     {
         session.setAttribute("userID",userID); %>
-You are logged in as: <%= userID%>
+        You are logged in as: <%= db.DBManager.toLow(userID)%>
+        <%
+            if(db.DBManager.findUser(userID, password) == true)
+            {
+                //goto varukorg.jsp / visa items.jsp
+            }else{%>
+                Du kom inte in, ingen användare hittades
+
+           <%}
 <%
     }
 else {%>
@@ -26,11 +35,11 @@ else {%>
         <tbody>
         <tr>
             <td>Username</td>
-            <td><input type="text" name="uname" value=""></td>
+            <td><input type="text" name="userName" value=""></td>
         </tr>
         <tr>
             <td>Password</td>
-            <td><input type="text" name="password" value=""></td>
+            <td><input type="password" name="password" value=""></td>
         </tr>
         <tr>
             <td><input type="submit" value="Login"></td>
@@ -39,6 +48,5 @@ else {%>
     </table>
 </form>
 <%}%>
-
 </body>
 </html>
