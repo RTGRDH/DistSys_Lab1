@@ -1,4 +1,5 @@
-<%--
+<%@ page import="java.sql.DriverManager" %>
+<%@ page import="java.sql.Connection" %><%--
   Created by IntelliJ IDEA.
   User: ernstreutergardh
   Date: 2020-09-29
@@ -11,6 +12,19 @@
     <title>Title</title>
 </head>
 <body>
-Test: <%=db.DBManager.toLow("HEJHEJ")%>
+<%
+    Connection con = null;
+    try{
+        Class.forName("com.mysql.jdbc.Driver").newInstance();
+        String connectionURL = "jdbc:mysql://localhost:3306/test" + "?zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=UTC";
+        con = DriverManager.getConnection(connectionURL, "root", "Test1234");
+        out.println("Hej");
+        //con = DriverManager.getConnection("jdbc:mysql://localhost/carl-bernhardhallberg", "root", "123");
+    }catch(Exception e)
+    {
+        e.printStackTrace();
+        out.println("Fail");
+    }
+%>
 </body>
 </html>

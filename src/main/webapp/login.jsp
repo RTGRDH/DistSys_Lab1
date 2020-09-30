@@ -11,23 +11,27 @@
     <title>Login prompt</title>
 </head>
 <body>
-
 <%
     String userID = request.getParameter("userName");
     String password = request.getParameter("password");
     if(password != null && userID != null)
-    {
+    {%>
+        <%db.DBManager.createUser(userID, password);
         session.setAttribute("userID",userID); %>
         You are logged in as: <%= db.DBManager.toLow(userID)%>
         <%
             if(db.DBManager.findUser(userID, password) == true)
-            {
-                //goto varukorg.jsp / visa items.jsp
-            }else{%>
-                Du kom inte in, ingen användare hittades
+            {%>
 
-           <%}
+
+                <jsp:forward page="index.jsp"></jsp:forward>
+
 <%
+            }else{
+                //Du kom inte in, ingen användare hittades
+
+           }
+
     }
 else {%>
 <form method="post" action="login.jsp">
