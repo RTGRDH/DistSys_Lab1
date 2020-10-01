@@ -11,6 +11,6 @@
     <title>Webshop</title>
 </head>
 <body>
-You are logged in as: <%= request.getParameter("username")%>
+You are logged in as: <%= request.getAttribute("userName")%>
 </body>
 </html>
