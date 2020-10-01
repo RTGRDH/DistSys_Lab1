@@ -1,31 +1,56 @@
-<%@ page import="java.sql.DriverManager" %>
-<%@ page import="java.sql.Connection" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: ernstreutergardh
-  Date: 2020-09-29
-  Time: 15:20
+  Date: 2020-09-30
+  Time: 00:06
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Login prompt</title>
 </head>
 <body>
 <%
-    Connection con = null;
-    try{
-        Class.forName("com.mysql.jdbc.Driver").newInstance();
-        String connectionURL = "jdbc:mysql://localhost:3306/test_user" + "?zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=UTC";
-        con = DriverManager.getConnection(connectionURL, "root", "Test1234");
-        out.println("Hej");
-        System.out.println(con.createStatement().executeQuery("SELECT * FROM test_user.user"));
-        //con = DriverManager.getConnection("jdbc:mysql://localhost/carl-bernhardhallberg", "root", "123");
-    }catch(Exception e)
-    {
-        e.printStackTrace();
-        out.println("Fail");
+    String userID = request.getParameter("userName");
+    String password = request.getParameter("password");
+    if(password != null && userID != null)
+    {%>
+        <%db.DBManager.createUser(userID, password);
+        session.setAttribute("userID",userID); %>
+        You are logged in as: <%= db.DBManager.toLow(userID)%>
+        <%
+            if(db.DBManager.findUser(userID, password) == true)
+            {%>
+
+
+                <jsp:forward page="items.jsp"></jsp:forward>
+
+<%
+            }else{
+                //Du kom inte in, ingen användare hittades
+
+           }
+
     }
-%>
+else {%>
+<form method="post" action="index.jsp">
+    <table border="3">
+        <tbody>
+        <tr>
+            <td>Username</td>
+            <td><input type="text" name="userName" value=""></td>
+        </tr>
+        <tr>
+            <td>Password</td>
+            <td><input type="password" name="password" value=""></td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="Login"></td>
+        </tr>
+        </tbody>
+    </table>
+</form>
+<%}%>
 </body>
 </html>
