@@ -16,8 +16,9 @@
     String password = request.getParameter("password");
     if(password != null && userID != null)
     {%>
-        <%db.DBManager.createUser(userID, password);
-        session.setAttribute("userID",userID); %>
+        <%
+            session.setAttribute("userID",userID);
+        %>
 
         <%
             if(db.DBManager.findUser(userID, password) == true)
