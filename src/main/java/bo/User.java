@@ -1,16 +1,22 @@
 package bo;
 
+import db.DBUser;
+
 import java.util.ArrayList;
 
-public class user {
+public class User {
     private String username;
     private String password;
     private ArrayList<Item> items;
 
-    public user(String username, String password){
+    public User(String username, String password){
         this.username = username;
         this.password = password;
         items = null;
+    }
+
+    public static User getUser(String username){
+        return DBUser.getUser(username);
     }
 
     public String getUsername(){
@@ -20,5 +26,9 @@ public class user {
     public ArrayList<Item> getItems(){
         ArrayList<Item> copy = new ArrayList(this.items);
         return copy;
+    }
+
+    public String getPassword(){
+        return this.password;
     }
 }
