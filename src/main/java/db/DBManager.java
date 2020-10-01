@@ -5,6 +5,7 @@ import java.sql.*;
 public class DBManager {
     private static DBManager instance = null;
     private Connection con = null;
+    private static String database = "test_user";
 
     private static DBManager getInstance(){
         if(instance == null){
@@ -15,8 +16,7 @@ public class DBManager {
     private DBManager(){
         try{
             Class.forName("com.mysql.jdbc.Driver").newInstance();
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/test_user", "root", "Test1234");
-            System.out.println("Hej");
+            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + this.database, "root", "Test1234");
             //con = DriverManager.getConnection("jdbc:mysql://localhost/carl-bernhardhallberg", "root", "123");
         }catch(Exception e) { e.printStackTrace(); }
     }
@@ -35,7 +35,7 @@ public class DBManager {
     public static Boolean findUser(String username, String password) throws SQLException {
         Connection con = getConnection();
         PreparedStatement stmt = null;
-        String query = "SELECT * FROM test_user.user WHERE username = '" + username + "'";
+        String query = "SELECT * FROM " + database + ".user WHERE username = '" + username + "'";
         try{
             stmt = con.prepareStatement(query);
             ResultSet rs = stmt.executeQuery(query);
@@ -65,7 +65,7 @@ public class DBManager {
             if(username != null && password != null){
                 createUser = con.createStatement();
                 String query = "INSERT" +
-                        "INTO test_user.user(username, password)" +
+                        "INTO " + database + ".user(username, password)" +
                         "VALUES('"+ username + "', '" + password + "')";
                 createUser.executeQuery(query);
                 con.setAutoCommit(true);
@@ -78,6 +78,4 @@ public class DBManager {
             }
         }
     }
-
-    public static String toLow(String t){ return t.toLowerCase(); }
 }
