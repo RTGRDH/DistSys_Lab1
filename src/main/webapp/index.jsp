@@ -18,14 +18,15 @@
     {%>
         <%db.DBManager.createUser(userID, password);
         session.setAttribute("userID",userID); %>
-        You are logged in as: <%= db.DBManager.toLow(userID)%>
+
         <%
             if(db.DBManager.findUser(userID, password) == true)
             {%>
 
 
-                <jsp:forward page="items.jsp"></jsp:forward>
-
+                <jsp:forward page="webshop.jsp">
+                <jsp:param name="username" value="userID"/>
+                </jsp:forward>
 <%
             }else{
                 //Du kom inte in, ingen användare hittades

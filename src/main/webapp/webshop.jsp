@@ -8,9 +8,9 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Webshop</title>
 </head>
 <body>
-
+You are logged in as: <%= request.getParameter("username")%>
 </body>
 </html>
