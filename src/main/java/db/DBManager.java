@@ -16,7 +16,10 @@ public class DBManager {
     private DBManager(){
         try{
             Class.forName("com.mysql.jdbc.Driver").newInstance();
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + this.database, "root", "Test1234");
+            String connectionURL = "jdbc:mysql://localhost:3306/" + this.database + "?zeroDateTimeBehavior=CONVERT_TO_NULL&serverTimezone=UTC";
+            //Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
+            con = DriverManager.getConnection(connectionURL, "root", "Test1234");
+            //con = DriverManager.getConnection("jdbc:mysql://localhost:3306/" + this.database, "root", "Test1234");
             //con = DriverManager.getConnection("jdbc:mysql://localhost/carl-bernhardhallberg", "root", "123");
         }catch(Exception e) { e.printStackTrace(); }
     }
@@ -51,8 +54,6 @@ public class DBManager {
         }finally{
             if(stmt != null) { stmt.close(); }
         }
-        //Använd con för att hitta user med username och password.
-        //Returnera true om den hittas, annars false. Default är false
         return false;
     }
 
