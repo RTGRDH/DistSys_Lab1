@@ -21,12 +21,6 @@ You are logged in as: ${username}
     <button name='getUser' value=' '>Search</button>
 </form>
 <%
-    for(int i = 0; i < CartHandler.getCart("test").getItems().size(); i++){
-        out.println(CartHandler.getCart("test").getItems().get(i).getName());
-    }
-
-%>
-<%
     for(int i = 0; i < ItemHandler.getItems().size(); i++)
     {%>
         <form action='/hemsida' method='POST'>
@@ -51,11 +45,10 @@ You are logged in as: ${username}
             <fieldset>
                 <legend>Shopping cart</legend>
                 <%
-                for(int i = 0; i < 10; i++)
+                for(int i = 0; i < CartHandler.getCart("test").getItems().size(); i++)
                 {%>
-                    <!-- Item 1 -->
+                    <%=CartHandler.getCart("test").getItems().get(i).getName()%>
                     <br>
-                    <!-- Item 2.. -->
                     <%
                 }%>
             </fieldset>

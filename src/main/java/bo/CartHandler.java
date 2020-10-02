@@ -16,4 +16,12 @@ public class CartHandler {
         }
         return cart;
     }
+
+    public void addToCart(String itemname){
+
+    }
+
+    public void removeFromCart(String itemname){
+
+    }
 }
