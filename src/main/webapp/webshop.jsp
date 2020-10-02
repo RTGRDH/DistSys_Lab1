@@ -16,9 +16,28 @@ You are logged in as: ${username}
 <form action='/hemsida' method='GET'>
     <b>User:</b><input type='text' name='name' >Name</input>
     <button name='getUser' value=' '>Search</button>
-<%
-    out.println(ItemHandler.getItems().get(0).getName() + ItemHandler.getItems().get(1).getName());
-%>
 </form>
+<%
+    for(int i = 0; i < ItemHandler.getItems().size(); i++)
+    {%>
+        <form action='/hemsida' method='POST'>
+            <table border="3">
+                <tbody>
+                <tr>
+                    <td>Item</td>
+                    <td><%=ItemHandler.getItems().get(i).getName()%></td>
+                </tr>
+                <tr>
+                    <td>Description</td>
+                    <td><%=ItemHandler.getItems().get(i).getDescription()%></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Remove"></td>
+                    <td><input type="submit" value="Add"></td>
+                </tr>
+            </table>
+            <%
+    }
+    %>
 </body>
 </html>
