@@ -33,8 +33,8 @@ You are logged in as: ${username}
                     <td><%=ItemHandler.getItems().get(i).getDescription()%></td>
                 </tr>
                 <tr>
-                    <td><input type="submit" value="Remove"></td>
-                    <td><input type="submit" value="Add"></td>
+                    <td><button name='addToCart' value=' '>Add</button></td>
+                    <td><button name='removeFromCart' value=' '>Remove</button></td>
                 </tr>
             </table>
             <%

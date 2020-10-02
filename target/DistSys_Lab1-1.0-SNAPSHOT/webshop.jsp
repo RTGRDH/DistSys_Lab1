@@ -1,5 +1,6 @@
 <%@ page import="bo.ItemHandler" %>
-<%@ page import="bo.Item" %><%--
+<%@ page import="bo.Item" %>
+<%@ page import="bo.UserHandler" %><%--
   Created by IntelliJ IDEA.
   User: ernstreutergardh
   Date: 2020-10-01
@@ -20,7 +21,7 @@ You are logged in as: ${username}
 <%
     for(int i = 0; i < ItemHandler.getItems().size(); i++)
     {%>
-        <form method='POST' action='/hemsida'>
+        <form action='/hemsida' method='POST'>
             <table border="3">
                 <tbody>
                 <tr>
@@ -32,19 +33,12 @@ You are logged in as: ${username}
                     <td><%=ItemHandler.getItems().get(i).getDescription()%></td>
                 </tr>
                 <tr>
-                    <td><input type="submit" value="Remove"></td>
-                    <td><input type="submit" value="Add"></td>
+                    <td><button name='addToCart' value=' '>Add</button></td>
+                    <td><button name='removeFromCart' value=' '>Remove</button></td>
                 </tr>
             </table>
             <%
     }
     %>
-<!--
-</form>
-<form action='/hemsida' method='POST'>
-
-    </tbody>
-</form>
--->
 </body>
 </html>

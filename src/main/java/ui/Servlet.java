@@ -13,7 +13,11 @@ import java.io.IOException;
 @WebServlet("")
 public class Servlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        RequestDispatcher rd = request.getRequestDispatcher("webshop.jsp");
+        if(request.getParameter("addToCart") != null)
+        {
 
+        }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
