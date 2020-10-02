@@ -1,5 +1,6 @@
 <%@ page import="bo.ItemHandler" %>
-<%@ page import="bo.Item" %><%--
+<%@ page import="bo.Item" %>
+<%@ page import="bo.UserHandler" %><%--
   Created by IntelliJ IDEA.
   User: ernstreutergardh
   Date: 2020-10-01

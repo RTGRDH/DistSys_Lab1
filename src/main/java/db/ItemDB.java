@@ -28,7 +28,6 @@ public class ItemDB extends bo.Item {
         Connection con = null;
         PreparedStatement stmt = null;
         ArrayList<Item> items = new ArrayList<>();
-        String user = null, pass = null;
         try{
             con = DBManager.getConnection();
             String query = "SELECT * FROM item";
