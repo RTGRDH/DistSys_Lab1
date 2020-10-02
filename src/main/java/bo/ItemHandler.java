@@ -15,6 +15,12 @@ public class ItemHandler {
         return items;
     }
 
+    public static ItemInfo getItem(String item){
+        Item i = Item.getItem(item);
+        ItemInfo itemI = new ItemInfo(i.getName(), i.getDescription());
+        return itemI;
+    }
+
     public static ArrayList<ItemInfo> getItems(){
         ArrayList<Item> it = Item.getItems();
         ArrayList<ItemInfo> items = new ArrayList<>();

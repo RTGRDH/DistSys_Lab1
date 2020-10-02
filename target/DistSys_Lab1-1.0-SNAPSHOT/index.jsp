@@ -12,27 +12,21 @@
 </head>
 <body>
 <%
-    String userID = request.getParameter("userName");
+    String username = request.getParameter("userName");
     String password = request.getParameter("password");
-    if(password != null && userID != null)
-    {%>
-        <%
-            session.setAttribute("userID",userID);
-        %>
-
-        <%
-            if(db.DBManager.findUser(userID, password) == true)
-            {%>
-
-
-                <jsp:forward page="webshop.jsp">
-                <jsp:param name="username" value="userID"/>
-                </jsp:forward>
-<%
-            }else{
-                //Du kom inte in, ingen användare hittades
-
-           }
+    if(password != null && username != null)
+    {
+        session.setAttribute("userName", username);
+        if(db.DBUser.findUser(username, password) == true)
+        {%>
+            <jsp:forward page="webshop.jsp">
+            <jsp:param name="userName" value="<%=username%>"/>
+            </jsp:forward>
+<%      }
+        else
+        {
+            //Du kom inte in, ingen användare hittades
+       }
 
     }
 else {%>

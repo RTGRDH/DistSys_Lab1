@@ -19,6 +19,10 @@ public class Item {
         this.desc = desc;
     }
 
+    public static Item getItem(String itemname){
+        return ItemDB.getItem(itemname);
+    }
+
     public static ArrayList<Item> getItems(){
         return ItemDB.getItems();
     }

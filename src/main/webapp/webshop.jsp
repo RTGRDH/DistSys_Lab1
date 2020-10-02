@@ -1,6 +1,7 @@
 <%@ page import="bo.ItemHandler" %>
 <%@ page import="bo.Item" %>
-<%@ page import="bo.UserHandler" %><%--
+<%@ page import="bo.UserHandler" %>
+<%@ page import="bo.CartHandler" %><%--
   Created by IntelliJ IDEA.
   User: ernstreutergardh
   Date: 2020-10-01
@@ -18,6 +19,13 @@ You are logged in as: ${username}
     <b>User:</b><input type='text' name='name' >Name</input>
     <button name='getUser' value=' '>Search</button>
 </form>
+<%
+    if(CartHandler.getCart("test").getItems() != null) {
+        for (int i = 0; i < CartHandler.getCart("test").getItems().size(); i++) {
+            out.println(CartHandler.getCart("test").getItems().get(i).getName());
+        }
+    }
+%>
 <%
     for(int i = 0; i < ItemHandler.getItems().size(); i++)
     {%>
