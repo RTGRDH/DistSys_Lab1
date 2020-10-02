@@ -1,0 +1,25 @@
+form {
+    width: 700px;
+    background-color: rgba(255, 0, 0, 0);
+    padding: 30px;
+    margin: 20px auto;
+    font-family:sans-serif;
+}
+fieldset {
+    background: #ffffff;
+    color: #030303;
+    padding: 20px;
+    margin:  20px 0;
+    border: 10px groove darkblue;
+    border-radius: 5px;
+}
+legend {
+    font-size: 25px;
+    text-transform: uppercase;
+    text-shadow: 0 1px 1px #6e6b6b;
+}
+button {
+    padding: 10px 20px;
+    border-radius: 30px;
+    border: darkblue;
+}
