@@ -1,4 +1,5 @@
-<%--
+<%@ page import="bo.ItemHandler" %>
+<%@ page import="bo.Item" %><%--
   Created by IntelliJ IDEA.
   User: ernstreutergardh
   Date: 2020-10-01
@@ -15,6 +16,9 @@ You are logged in as: ${username}
 <form action='/hemsida' method='GET'>
     <b>User:</b><input type='text' name='name' >Name</input>
     <button name='getUser' value=' '>Search</button>
+<%
+    out.println(ItemHandler.getItems().get(0).getName() + ItemHandler.getItems().get(1).getName());
+%>
 </form>
 </body>
 </html>

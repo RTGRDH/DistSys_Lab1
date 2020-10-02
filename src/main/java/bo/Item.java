@@ -1,6 +1,9 @@
 package bo;
 
+import db.DBUser;
 import db.ItemDB;
+
+import java.util.ArrayList;
 import java.util.Collection;
 public class Item {
     private String name;
@@ -14,6 +17,10 @@ public class Item {
         this.id = id;
         this.name = name;
         this.desc = desc;
+    }
+
+    public static ArrayList<Item> getItems(){
+        return ItemDB.getItems();
     }
 
     public String getName(){

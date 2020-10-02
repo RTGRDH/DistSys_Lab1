@@ -1,7 +1,8 @@
 <%@ page import="java.sql.DriverManager" %>
 <%@ page import="java.sql.Connection" %>
 <%@ page import="java.sql.PreparedStatement" %>
-<%@ page import="java.sql.ResultSet" %><%--
+<%@ page import="java.sql.ResultSet" %>
+<%@ page import="bo.UserHandler" %><%--
   Created by IntelliJ IDEA.
   User: ernstreutergardh
   Date: 2020-09-29
@@ -15,7 +16,7 @@
 </head>
 <body>
 <%
-    if(db.DBManager.findUser("test", "123") == true){
+    if(UserHandler.getUser("test")){
         out.println("Lyckat");
     }else{
         out.println("Misslyckat");
