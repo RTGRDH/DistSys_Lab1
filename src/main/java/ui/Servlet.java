@@ -19,7 +19,7 @@ public class Servlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher rd = request.getRequestDispatcher("webshop.jsp");
         if(request.getParameter("getUser") != null) {
-            request.setAttribute("username", UserHandler.getUser(request.getParameter("name")).getPassword());
+            request.setAttribute("username", UserHandler.getUser(request.getParameter("name")).getUsername());
         }else{
             request.setAttribute("username", "null");
         }

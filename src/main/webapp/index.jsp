@@ -17,7 +17,7 @@
     if(password != null && username != null)
     {
         session.setAttribute("userName", username);
-        if(db.DBManager.findUser(username, password) == true)
+        if(db.DBUser.findUser(username, password) == true)
         {%>
             <jsp:forward page="webshop.jsp">
             <jsp:param name="userName" value="<%=username%>"/>

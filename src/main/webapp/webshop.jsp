@@ -11,10 +11,6 @@
     <title>Webshop</title>
 </head>
 <body>
-You are logged in as: ${username}
-<form action='/hemsida' method='GET'>
-    <b>User:</b><input type='text' name='name' >Name</input>
-    <button name='getUser' value=' '>Search</button>
-</form>
+
 </body>
 </html>
