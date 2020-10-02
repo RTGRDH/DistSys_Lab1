@@ -15,7 +15,7 @@
 </head>
 <body>
 <%
-    if(db.DBManager.findUser("HEJ", "123") == true){
+    if(db.DBManager.findUser("test", "123") == true){
         out.println("Lyckat");
     }else{
         out.println("Misslyckat");
