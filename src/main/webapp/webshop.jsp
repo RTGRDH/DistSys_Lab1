@@ -12,6 +12,7 @@
 <html>
 <head>
     <title>Webshop</title>
+    <link rel="stylesheet" href="main.css">
 </head>
 <body>
 You are logged in as: ${username}
@@ -48,5 +49,16 @@ You are logged in as: ${username}
             <%
     }
     %>
+            <fieldset>
+                <legend>Shopping cart</legend>
+                <%
+                for(int i = 0; i < 10; i++)
+                {%>
+                    <!-- Item 1 -->
+                    <br>
+                    <!-- Item 2.. -->
+                    <%
+                }%>
+            </fieldset>
 </body>
 </html>
