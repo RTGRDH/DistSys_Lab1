@@ -1,25 +1,51 @@
-form {
-    width: 700px;
-    background-color: rgba(255, 0, 0, 0);
-    padding: 30px;
-    margin: 20px auto;
-    font-family:sans-serif;
+.login{
+    padding: 10px;
+}
+.login button{
+    padding: 10px 20px;
+    border-radius: 30px;
+    border-color: darkblue;
+}
+td{
+    padding: 10px;
+    width: 100px;
+    border-color: black;
+
+}
+table{
+    border-color: black;
 }
 fieldset {
     background: #ffffff;
     color: #030303;
-    padding: 20px;
-    margin:  20px 0;
-    border: 10px groove darkblue;
+    border: 5px solid black;
     border-radius: 5px;
+    height: 500px;
 }
-legend {
+
+.items{
+    background-color: rgba(150, 147, 147, 0);
+    padding-left: 10px;
+    font-family:sans-serif;
+    display: block;
+    float: right;
+}
+.items form{
+    width: 700px;
+    min-width: 200px;
+    box-sizing: border-box;
+}
+.items button {
+    padding: 10px 20px;
+    border-radius: 30px;
+    border-color: darkblue;
+}
+.shoppingCart{
+    float: left;
+    margin-right: 300px;
+}
+.shoppingCart legend {
     font-size: 25px;
     text-transform: uppercase;
     text-shadow: 0 1px 1px #6e6b6b;
-}
-button {
-    padding: 10px 20px;
-    border-radius: 30px;
-    border: darkblue;
 }
