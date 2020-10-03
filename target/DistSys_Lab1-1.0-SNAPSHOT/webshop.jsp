@@ -38,7 +38,7 @@
                 <tr>
                     <td><button type="submit" name='addItem<%=i%>' value=' '>Add</button></td><!-- KOPPLA TILL CartHandler.addToCart(itemname) -->
                     <%if (request.getParameter("addItem" + i) != null) {
-                        CartHandler.addToCart(ItemHandler.getItems().get(i).getName(),i);
+                        CartHandler.addToCart(ItemHandler.getItems().get(i).getName(),i, "test");
                     }%>
                     <td><button type="submit" name='removeItem<%=i%>' value=' '>Remove</button></td> <!-- KOPPLA TILL CartHandler.removeFromCart(itemname) -->
                     <%if (request.getParameter("removeItem" + i) != null) {
