@@ -16,16 +16,11 @@
 </head>
 <body>
 <%
-    if(UserHandler.getUser("test")){
-        out.println("Lyckat");
-    }else{
-        out.println("Misslyckat");
-    }
+
+      String l= bo.CartHandler.addToCart();
+    out.println("kooo:"+l);
 %>
-You are logged in as: ${username}
-<form action='/hemsida' method='GET'>
-    <b>User:</b><input type='text' name='name' >Name</input>
-    <button name='getUser' value=' '>Search</button>
-</form>
+
+
 </body>
 </html>
