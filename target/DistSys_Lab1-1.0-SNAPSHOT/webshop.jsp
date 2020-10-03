@@ -1,7 +1,4 @@
-<%@ page import="bo.ItemHandler" %>
-<%@ page import="bo.Item" %>
-<%@ page import="bo.UserHandler" %>
-<%@ page import="bo.CartHandler" %><%--
+<%@ page import="bo.*" %><%--
   Created by IntelliJ IDEA.
   User: ernstreutergardh
   Date: 2020-10-01
@@ -23,7 +20,7 @@ You are logged in as: ${username}
 <%
     for(int i = 0; i < ItemHandler.getItems().size(); i++)
     {%>
-        <form action='/hemsida' method='POST'>
+        <form action ="/hemsida" method='POST'>
             <table border="3">
                 <tbody>
                 <tr>
@@ -35,8 +32,14 @@ You are logged in as: ${username}
                     <td><%=ItemHandler.getItems().get(i).getDescription()%></td>
                 </tr>
                 <tr>
-                    <td><button type="submit" name='addToCart' value=''><%=i%></button></td><!-- KOPPLA TILL CartHandler.addToCart(itemname) -->
-                    <td><button type="submit" name='removeFromCart' value=' '>Remove</button></td> <!-- KOPPLA TILL CartHandler.removeFromCart(itemname) -->
+                    <td><button type="submit" name='addItem<%=i%>' value=' '>Add</button></td><!-- KOPPLA TILL CartHandler.addToCart(itemname) -->
+                    <%if (request.getParameter("addItem" + i) != null) {
+                        CartHandler.addToCart(ItemHandler.getItems().get(i).getName(),i);
+                    }%>
+                    <td><button type="submit" name='removeItem<%=i%>' value=' '>Remove</button></td> <!-- KOPPLA TILL CartHandler.removeFromCart(itemname) -->
+                    <%if (request.getParameter("removeItem" + i) != null) {
+                        CartHandler.removeFromCart(ItemHandler.getItems().get(i).getName(),i);
+                    }%>
                 </tr>
             </table>
             <%
@@ -47,8 +50,9 @@ You are logged in as: ${username}
                 <%
                 for(int i = 0; i < CartHandler.getCart("test").getItems().size(); i++)
                 {%>
-                    <%=CartHandler.getCart("test").getItems().get(i).getName()%>
-                    <br>
+                <tr>
+                    <td><%=CartHandler.getCart("test").getItems().get(i).getName()%></td>
+                </tr>
                     <%
                 }%>
             </fieldset>

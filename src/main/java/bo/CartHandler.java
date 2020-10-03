@@ -1,5 +1,6 @@
 package bo;
 
+import sun.jvm.hotspot.StackTrace;
 import ui.CartInfo;
 import ui.ItemInfo;
 import javax.servlet.RequestDispatcher;
@@ -11,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 public class CartHandler {
 
@@ -24,18 +26,14 @@ public class CartHandler {
         return cart;
     }
 
-    public void addToCart(String itemname, int i, HttpServletRequest request, HttpServletResponse response){
-        RequestDispatcher rd = request.getRequestDispatcher("webshop.jsp");
-        if(request.getParameter("addToCart"+i) != null)
-        {
+    static public void addToCart(String itemName, int i){
 
-        }
     }
 
-    public void removeFromCart(String itemname, int i, HttpServletRequest request, HttpServletResponse response){
-        if(request.getParameter("removeFromCart"+i) != null)
-        {
 
-        }
+
+
+    static public void removeFromCart(String itemname, int i){
+
     }
 }
