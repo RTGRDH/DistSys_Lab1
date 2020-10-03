@@ -35,8 +35,8 @@ You are logged in as: ${username}
                     <td><%=ItemHandler.getItems().get(i).getDescription()%></td>
                 </tr>
                 <tr>
-                    <td><button name='addToCart' value=' '>Add</button></td><!-- KOPPLA TILL CartHandler.addToCart(itemname) -->
-                    <td><button name='removeFromCart' value=' '>Remove</button></td> <!-- KOPPLA TILL CartHandler.removeFromCart(itemname) -->
+                    <td><button type="submit" name='addToCart<%=i%>' value=''>Add</button></td><!-- KOPPLA TILL CartHandler.addToCart(itemname) -->
+                    <td><button type="submit" name='removeFromCart<%=i%>' value=' '>Remove</button></td> <!-- KOPPLA TILL CartHandler.removeFromCart(itemname) -->
                 </tr>
             </table>
             <%
