@@ -19,6 +19,11 @@ public class Cart {
         items.add(newItem);
     }
 
+    public void addItemToCart(ItemInfo newItem, String username){
+        CartDB.addItem(newItem.getName(), username);
+        items.add(newItem);
+    }
+
     public static Cart getCart(String username){
         return CartDB.getCart(username);
     }

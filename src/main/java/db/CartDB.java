@@ -5,10 +5,7 @@ import bo.Item;
 import bo.ItemHandler;
 import ui.ItemInfo;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 
 public class CartDB extends bo.Cart {
@@ -36,23 +33,16 @@ public class CartDB extends bo.Cart {
         return cart;
     }
 
-    /*public static ArrayList<Item> getItems(){
-        //SQL
+    public static void addItem(String item, String username){
         Connection con = null;
-        PreparedStatement stmt = null;
-        ArrayList<Item> items = new ArrayList<>();
+        Statement stmt = null;
         try{
             con = DBManager.getConnection();
-            String query = "SELECT * FROM item";
-            stmt = con.prepareStatement(query);
-            ResultSet rs = stmt.executeQuery();
-            while(rs.next()){
-                items.add(new ItemDB(rs.getInt(1), rs.getString(2), rs.getString(3)));
-            }
+            String query = "INSERT INTO cart(username, itemname) VALUES('" + username + "', '" + item + "')";
+            stmt = con.createStatement();
+            stmt.executeUpdate(query);
         }catch(SQLException e){
             e.printStackTrace();
         }
-        return items;
-    }*/
-
+    }
 }

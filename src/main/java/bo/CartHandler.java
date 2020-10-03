@@ -26,12 +26,10 @@ public class CartHandler {
         return cart;
     }
 
-    static public void addToCart(String itemName, int i){
-
+     public static void addToCart(String itemName, int i, String username){
+        Cart c = Cart.getCart(username);
+        c.addItemToCart(new ItemInfo(itemName, ItemHandler.getItem(itemName).getDescription()), username);
     }
-
-
-
 
     static public void removeFromCart(String itemname, int i){
 
