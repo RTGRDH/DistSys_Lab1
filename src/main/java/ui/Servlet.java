@@ -19,7 +19,6 @@ public class Servlet extends HttpServlet {
 
         }
     }
-
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher rd = request.getRequestDispatcher("webshop.jsp");
         if(request.getParameter("getUser") != null) {

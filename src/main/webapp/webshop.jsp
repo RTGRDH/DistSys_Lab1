@@ -13,7 +13,7 @@
 </head>
 <body>
     <div class = "login">
-        <label>You are logged in as: ${username}</label>
+        You are logged in as: ${username}
         <form action='/hemsida' method='GET'>
             <b>Username:</b><input type='text' name='userName' >Name</input>
             <button name='getUser' value=' '>Search</button>
@@ -22,8 +22,8 @@
     <div class="items">
 <%
     for(int i = 0; i < ItemHandler.getItems().size(); i++)
-    {%>
-
+    {
+%>
         <form action ="/hemsida" method='POST'>
             <table border="3">
                 <tbody>
@@ -36,18 +36,20 @@
                     <td><%=ItemHandler.getItems().get(i).getDescription()%></td>
                 </tr>
                 <tr>
-                    <td><button type="submit" name='addItem<%=i%>' value=' '>Add</button></td><!-- KOPPLA TILL CartHandler.addToCart(itemname) -->
-                    <%if (request.getParameter("addItem" + i) != null) {
-                        CartHandler.addToCart(ItemHandler.getItems().get(i).getName(),i, "test");
-                    }%>
-                    <td><button type="submit" name='removeItem<%=i%>' value=' '>Remove</button></td> <!-- KOPPLA TILL CartHandler.removeFromCart(itemname) -->
-                    <%if (request.getParameter("removeItem" + i) != null) {
-                        CartHandler.removeFromCart(ItemHandler.getItems().get(i).getName(),i);
-                    }%>
+                    <td><button name='addItem<%=i%>' >Add</button></td><!-- KOPPLA TILL CartHandler.addToCart(itemname) -->
+                    <td><button name='removeItem<%=i%>' value=' '>Remove</button></td> <!-- KOPPLA TILL CartHandler.removeFromCart(itemname) -->
                 </tr>
             </table>
         </form>
             <%
+    }
+    for(int j = 0; j < ItemHandler.getItems().size(); j++)
+    {
+        if (session.getAttribute("button") != null)
+        {
+            System.out.println(session.getAttribute("button"));
+            //CartHandler.addToCart(ItemHandler.getItems().get(i).getName(),i, "test");
+        }
     }
     %>
     </div>
