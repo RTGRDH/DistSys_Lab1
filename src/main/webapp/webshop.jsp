@@ -1,4 +1,6 @@
-<%@ page import="bo.*" %><%--
+<%@ page import="bo.*" %>
+<%@ page import="ui.ItemInfo" %>
+<%@ page import="java.util.ArrayList" %><%--
   Created by IntelliJ IDEA.
   User: ernstreutergardh
   Date: 2020-10-01
@@ -13,7 +15,7 @@
 </head>
 <body>
     <div class = "login">
-        You are logged in as: ${username}
+        <label>You are logged in as: ${username}</label>
         <form action='/hemsida' method='GET'>
             <b>Username:</b><input type='text' name='userName' >Name</input>
             <button name='getUser' value=' '>Search</button>
@@ -21,35 +23,36 @@
     </div>
     <div class="items">
 <%
-    for(int i = 0; i < ItemHandler.getItems().size(); i++)
-    {
-%>
+    ArrayList<ItemInfo> items = ItemHandler.getItems();
+    //CartHandler.removeFromCart("äpple", "test");
+    for(int i = 0; i < items.size(); i++)
+    {%>
+
         <form action ="/hemsida" method='POST'>
             <table border="3">
                 <tbody>
                 <tr>
                     <td>Item</td>
-                    <td><%=ItemHandler.getItems().get(i).getName()%></td>
+                    <td><%=items.get(i).getName()%></td>
                 </tr>
                 <tr>
                     <td>Description</td>
-                    <td><%=ItemHandler.getItems().get(i).getDescription()%></td>
+                    <td><%=items.get(i).getDescription()%></td>
                 </tr>
                 <tr>
-                    <td><button name='addItem<%=i%>' >Add</button></td><!-- KOPPLA TILL CartHandler.addToCart(itemname) -->
+                    <td><button name='add<%=i%>' value=' '>Add</button></td><!-- KOPPLA TILL CartHandler.addToCart(itemname) -->
+                    <%
+                        session.setAttribute("addItem", i);
+                        System.out.println(session.getAttribute("addItem"));
+                    %>
                     <td><button name='removeItem<%=i%>' value=' '>Remove</button></td> <!-- KOPPLA TILL CartHandler.removeFromCart(itemname) -->
+                    <%if (request.getParameter("removeItem" + i) != null) {
+                        CartHandler.removeFromCart(ItemHandler.getItems().get(i).getName(), "test");
+                    }%>
                 </tr>
             </table>
         </form>
             <%
-    }
-    for(int j = 0; j < ItemHandler.getItems().size(); j++)
-    {
-        if (session.getAttribute("button") != null)
-        {
-            System.out.println(session.getAttribute("button"));
-            //CartHandler.addToCart(ItemHandler.getItems().get(i).getName(),i, "test");
-        }
     }
     %>
     </div>

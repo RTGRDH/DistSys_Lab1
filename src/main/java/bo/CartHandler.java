@@ -27,11 +27,29 @@ public class CartHandler {
     }
 
      public static void addToCart(String itemName, int i, String username){
-        Cart c = Cart.getCart(username);
-        c.addItemToCart(new ItemInfo(itemName, ItemHandler.getItem(itemName).getDescription()), username);
+         Cart c = Cart.getCart(username);
+         int quantity = 0;
+         for(int j = 0; j < c.getItemSize(); j++){
+             if(c.getItems().get(j).getName().equals(itemName)){
+                 quantity++;
+             }
+         }
+         c.addItemToCart(new ItemInfo(itemName, ItemHandler.getItem(itemName).getDescription()), username, quantity);
     }
 
-    static public void removeFromCart(String itemname, int i){
-
+    static public void removeFromCart(String itemname, String username){
+        Cart c = Cart.getCart(username);
+        int quantity = 0;
+        for(int i = 0; i < c.getItemSize(); i++){
+            if(c.getItems().get(i).getName().equals(itemname)){
+                quantity++;
+            }
+        }
+        if((quantity - 1) == 0){
+            c.removeItem(itemname, username);
+        }else{
+            quantity--;
+            c.removeItem(itemname, username, quantity);
+        }
     }
 }
