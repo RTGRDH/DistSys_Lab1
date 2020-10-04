@@ -30,8 +30,4 @@ public class ItemHandler {
         }
         return items;
     }
-
-    public static void addItemToCart(String username, String item){
-
-    }
 }
