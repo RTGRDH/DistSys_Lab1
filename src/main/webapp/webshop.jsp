@@ -1,6 +1,8 @@
 <%@ page import="bo.*" %>
 <%@ page import="ui.ItemInfo" %>
-<%@ page import="java.util.ArrayList" %><%--
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="db.DBUser" %>
+<%@ page import="ui.UserInfo" %><%--
   Created by IntelliJ IDEA.
   User: ernstreutergardh
   Date: 2020-10-01
@@ -14,59 +16,94 @@
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
-    <div class = "login">
-        <label>You are logged in as: ${username}</label>
-        <form action='/hemsida' method='GET'>
-            <b>Username:</b><input type='text' name='userName' >Name</input>
-            <button name='getUser' value=' '>Search</button>
-        </form>
-    </div>
-    <div class="items">
 <%
-    ArrayList<ItemInfo> items = ItemHandler.getItems();
-    //CartHandler.removeFromCart("äpple", "test");
-    for(int i = 0; i < items.size(); i++)
-    {%>
-
-        <form action ="/hemsida" method='POST'>
+    if(request.getParameter("login") != null && request.getParameter("username") != "" && request.getParameter("password") != ""){
+        UserInfo user = new UserInfo(request.getParameter("username"), request.getParameter("password"));
+        if(UserHandler.getUser(user.getUsername(), user.getPassword()) != null){
+            session.setAttribute("username", user.getUsername());
+        }
+    }
+%>
+    <div class = "login">
+        <form>
+            <%
+                if(session.getAttribute("username") != null){%>
+                <label>You are logged in as: <%=session.getAttribute("username")%></label>
+                <%
+            }else{%>
+                <label>You are logged in as: null</label>
+<%
+            }%>
             <table border="3">
                 <tbody>
                 <tr>
-                    <td>Item</td>
-                    <td><%=items.get(i).getName()%></td>
+                    <td>Username</td>
+                    <td><input type="text" name="username" value=""></td>
                 </tr>
                 <tr>
-                    <td>Description</td>
-                    <td><%=items.get(i).getDescription()%></td>
+                    <td>Password</td>
+                    <td><input type="password" name="password" value=""></td>
                 </tr>
                 <tr>
-                    <td><button name='add<%=i%>' value=' '>Add</button></td><!-- KOPPLA TILL CartHandler.addToCart(itemname) -->
-                    <%
-                        session.setAttribute("addItem", i);
-                        System.out.println(session.getAttribute("addItem"));
-                    %>
-                    <td><button name='removeItem<%=i%>' value=' '>Remove</button></td> <!-- KOPPLA TILL CartHandler.removeFromCart(itemname) -->
-                    <%if (request.getParameter("removeItem" + i) != null) {
-                        CartHandler.removeFromCart(ItemHandler.getItems().get(i).getName(), "test");
-                    }%>
+                    <td><button type="submit" name="login" value=" ">Login</button></td>
+                    <td><button type="submit" name=createUser" value=" ">Create User</button></td>
                 </tr>
+                </tbody>
             </table>
         </form>
-            <%
-    }
-    %>
     </div>
+    <div class="items">
+    <form>
+        <%
+            ArrayList<ItemInfo> items = ItemHandler.getItems();
+            for(int i = 0; i < items.size(); i++){
+                %>
+                <table border="3">
+                    <tr>
+                        <td>Item</td>
+                        <td>Description</td>
+                    </tr>
+                    <tr>
+                        <td><%=items.get(i).getName()%></td>
+                        <td><%=items.get(i).getDescription()%></td>
+                    </tr>
+                    <tr>
+                        <td><button name='addItem<%=i%>' value='add'>Add</button></td>
+                        <td><button name='removeItem<%=i%>' value='remove'>Remove</button></td>
+                    </tr>
+                </table>
+
+            <%}
+            for(int i = 0; i < items.size(); i++)
+            {
+                if(request.getParameter("addItem"+i) != null )
+                {
+                    if(session.getAttribute("username") != null){
+                        CartHandler.addToCart(items.get(i).getName(), i, session.getAttribute("username").toString());
+                    }
+                }else if(request.getParameter("removeItem"+i) != null){
+                    if(session.getAttribute("username") != null){
+                        CartHandler.removeFromCart(items.get(i).getName(), session.getAttribute("username").toString());
+                    }
+                }
+            }
+            %>
+
+    </form>
+</div>
             <div class="shoppingCart">
                 <fieldset>
                     <legend>Shopping cart</legend>
                     <%
-                    for(int i = 0; i < CartHandler.getCart("test").getItems().size(); i++)
-                    {%>
-                    <tr>
-                        <td><%=CartHandler.getCart("test").getItems().get(i).getName()%></td>
-                    </tr>
-                        <%
-                    }%>
+                        if(session.getAttribute("username") != null){
+                            for(int i = 0; i < CartHandler.getCart(session.getAttribute("username").toString()).getItems().size(); i++){
+                                %>
+                                <tr>
+                                    <td><%=CartHandler.getCart(session.getAttribute("username").toString()).getItems().get(i).getName()%></td>
+                                </tr>
+                                <br><%
+                            }
+                        }%>
                 </fieldset>
             </div>
 </body>

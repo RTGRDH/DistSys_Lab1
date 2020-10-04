@@ -22,5 +22,54 @@
 %>
 
 
+
+
+
+
+
+
+
+
+<div class="items">
+    <%
+        ArrayList<ItemInfo> items = ItemHandler.getItems();
+        //CartHandler.removeFromCart("äpple", "test");
+        for(int i = 0; i < items.size(); i++)
+        {%>
+    <form action ="/hemsida" method='POST'>
+        <table border="3">
+            <tr>
+                <td>Item</td>
+                <td><%=items.get(i).getName()%></td>
+            </tr>
+            <tr>
+                <td>Description</td>
+                <td><%=items.get(i).getDescription()%></td>
+            </tr>
+            <tr>
+                <td><button name='addItem<%=i%>' value='add'>Add</button></td><!-- KOPPLA TILL CartHandler.addToCart(itemname) -->
+                <td><button name='removeItem<%=i%>' value=' '>Remove</button></td> <!-- KOPPLA TILL CartHandler.removeFromCart(itemname) -->
+            </tr>
+        </table>
+    </form>
+    <%
+        }
+        for (int i = 0; i < items.size(); i++)
+        {
+            if(request.getParameter("addItem"+i) != null)
+            {
+                System.out.println("HEEJEJEJEJJE");
+            }
+        }
+    %>
+</div>
+
+
+
+
+
+
+
+
 </body>
 </html>

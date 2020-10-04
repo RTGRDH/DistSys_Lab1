@@ -4,9 +4,11 @@ import ui.UserInfo;
 
 public class UserHandler {
 
-    public static UserInfo getUser(String username){
+    public static UserInfo getUser(String username, String password){
         User user = User.getUser(username);
-        return new UserInfo(user.getUsername(), user.getPassword());
+        if(user.getPassword().equals(password)){
+            return new UserInfo(user.getUsername(), user.getPassword());
+        }
+        return null;
     }
-
 }
