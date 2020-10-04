@@ -13,19 +13,15 @@ import java.io.IOException;
 @WebServlet("")
 public class Servlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher rd = request.getRequestDispatcher("webshop.jsp");
-        if(request.getParameter("addToCart") != null)
-        {
 
-        }
     }
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         RequestDispatcher rd = request.getRequestDispatcher("webshop.jsp");
-        if(request.getParameter("getUser") != null) {
+        /*if(request.getParameter("getUser") != null) {
             //request.setAttribute("username", UserHandler.getUser(request.getParameter("name")).getUsername());
         }else{
             request.setAttribute("username", "null");
-        }
+        }*/
         rd.forward(request, response); //ALLTID SLUTET
     }
 }
