@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement />
+  <nodes>
+    <node x="386.4798809523809" y="340.0">db.CartDB</node>
+    <node x="513.4798809523809" y="260.0">ui.CartInfo</node>
+    <node x="135.41547619047617" y="160.0">bo.Item</node>
+    <node x="99.91666666666663" y="340.0">bo.UserHandler</node>
+    <node x="444.0244047619048" y="160.0">ui.ItemInfo</node>
+    <node x="127.91547619047617" y="80.0">db.ItemDB</node>
+    <node x="51.267380952380904" y="260.0">bo.User</node>
+    <node x="282.26738095238096" y="260.0">bo.ItemHandler</node>
+    <node x="422.52440476190475" y="420.0">bo.Cart</node>
+    <node x="151.2673809523809" y="260.0">ui.UserInfo</node>
+    <node x="0.0" y="160.0">db.DBUser</node>
+    <node x="488.1666666666666" y="500.0">bo.CartHandler</node>
+    <node x="-120.36773480727916" y="258.85341942184516">ui.Servlet</node>
+    <node x="95.56190476190477" y="0.0">db.DBManager</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="ui.CartInfo" target="ui.ItemInfo">
+      <point x="-27.75" y="-15.0" />
+      <point x="541.2298809523809" y="240.0" />
+      <point x="516.1744047619047" y="240.0" />
+      <point x="16.649999999999977" y="15.0" />
+    </edge>
+    <edge source="db.CartDB" target="bo.Cart">
+      <point x="31.666666666666686" y="15.0" />
+      <point x="465.6465476190476" y="400.0" />
+      <point x="462.52440476190475" y="400.0" />
+      <point x="0.0" y="-15.0" />
+    </edge>
+    <edge source="db.DBUser" target="db.DBManager">
+      <point x="0.0" y="-15.0" />
+      <point x="47.5" y="55.0" />
+      <point x="115.39523809523808" y="55.0" />
+      <point x="-39.666666666666686" y="15.0" />
+    </edge>
+    <edge source="bo.CartHandler" target="bo.ItemHandler">
+      <point x="-55.83333333333326" y="-15.0" />
+      <point x="499.3333333333333" y="480.0" />
+      <point x="315.76738095238096" y="480.0" />
+      <point x="-33.5" y="15.0" />
+    </edge>
+    <edge source="bo.Cart" target="ui.ItemInfo">
+      <point x="32.0" y="-15.0" />
+      <point x="494.52440476190475" y="400.0" />
+      <point x="502.9798809523809" y="400.0" />
+      <point x="502.9798809523809" y="240.0" />
+      <point x="505.07440476190476" y="240.0" />
+      <point x="5.5499999999999545" y="15.0" />
+    </edge>
+    <edge source="bo.CartHandler" target="bo.Cart">
+      <point x="-33.49999999999994" y="-15.0" />
+      <point x="521.6666666666666" y="470.0" />
+      <point x="462.52440476190475" y="470.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="bo.User" target="db.DBUser">
+      <point x="-32.0" y="-15.0" />
+      <point x="59.267380952380904" y="240.0" />
+      <point x="15.833333333333314" y="240.0" />
+      <point x="-31.66666666666667" y="15.0" />
+    </edge>
+    <edge source="bo.UserHandler" target="ui.UserInfo">
+      <point x="0.0" y="-15.0" />
+      <point x="166.91666666666663" y="315.0" />
+      <point x="179.0173809523809" y="315.0" />
+      <point x="-27.75" y="15.0" />
+    </edge>
+    <edge source="bo.User" target="bo.Item">
+      <point x="16.0" y="-15.0" />
+      <point x="107.2673809523809" y="230.0" />
+      <point x="148.74880952380948" y="230.0" />
+      <point x="-26.666666666666657" y="15.0" />
+    </edge>
+    <edge source="db.CartDB" target="bo.ItemHandler">
+      <point x="-35.625" y="-15.0" />
+      <point x="398.3548809523809" y="315.0" />
+      <point x="382.76738095238096" y="315.0" />
+      <point x="33.5" y="15.0" />
+    </edge>
+    <edge source="bo.CartHandler" target="ui.CartInfo">
+      <point x="11.166666666666686" y="-15.0" />
+      <point x="566.3333333333333" y="480.0" />
+      <point x="562.7111904761905" y="480.0" />
+      <point x="562.7111904761905" y="315.0" />
+      <point x="596.7298809523809" y="315.0" />
+      <point x="27.75" y="15.0" />
+    </edge>
+    <edge source="db.CartDB" target="db.DBManager">
+      <point x="-11.875" y="-15.0" />
+      <point x="422.1048809523809" y="315.0" />
+      <point x="426.7673809523809" y="315.0" />
+      <point x="426.7673809523809" y="55.0" />
+      <point x="194.7285714285714" y="55.0" />
+      <point x="39.66666666666663" y="15.0" />
+    </edge>
+    <edge source="db.ItemDB" target="db.DBManager">
+      <point x="0.0" y="-15.0" />
+      <point x="175.41547619047617" y="55.0" />
+      <point x="155.06190476190477" y="55.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="bo.ItemHandler" target="ui.ItemInfo">
+      <point x="0.0" y="-15.0" />
+      <point x="349.26738095238096" y="210.0" />
+      <point x="449.5744047619048" y="210.0" />
+      <point x="-49.94999999999999" y="15.0" />
+    </edge>
+    <edge source="db.DBUser" target="bo.User">
+      <point x="0.0" y="15.0" />
+      <point x="47.5" y="230.0" />
+      <point x="75.2673809523809" y="230.0" />
+      <point x="-16.0" y="-15.0" />
+    </edge>
+    <edge source="bo.CartHandler" target="ui.ItemInfo">
+      <point x="55.83333333333343" y="-15.0" />
+      <point x="611.0" y="480.0" />
+      <point x="645.9798809523809" y="480.0" />
+      <point x="645.9798809523809" y="210.0" />
+      <point x="549.4744047619047" y="210.0" />
+      <point x="49.94999999999993" y="15.0" />
+    </edge>
+    <edge source="bo.ItemHandler" target="bo.Item">
+      <point x="-44.66666666666666" y="-15.0" />
+      <point x="304.6007142857143" y="240.0" />
+      <point x="202.08214285714286" y="240.0" />
+      <point x="26.666666666666686" y="15.0" />
+    </edge>
+    <edge source="db.ItemDB" target="bo.Item">
+      <point x="31.666666666666686" y="15.0" />
+      <point x="207.08214285714286" y="135.0" />
+      <point x="202.08214285714286" y="135.0" />
+      <point x="26.666666666666686" y="-15.0" />
+    </edge>
+    <edge source="bo.UserHandler" target="bo.User">
+      <point x="-44.66666666666666" y="-15.0" />
+      <point x="122.24999999999994" y="315.0" />
+      <point x="91.2673809523809" y="315.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="bo.Item" target="db.ItemDB">
+      <point x="-26.666666666666686" y="-15.0" />
+      <point x="148.74880952380948" y="135.0" />
+      <point x="143.74880952380948" y="135.0" />
+      <point x="-31.666666666666657" y="15.0" />
+    </edge>
+    <edge source="db.CartDB" target="ui.ItemInfo">
+      <point x="11.875" y="-15.0" />
+      <point x="445.8548809523809" y="315.0" />
+      <point x="447.89940476190475" y="315.0" />
+      <point x="447.89940476190475" y="230.0" />
+      <point x="471.7744047619048" y="230.0" />
+      <point x="-27.75" y="15.0" />
+    </edge>
+    <edge source="bo.Cart" target="db.CartDB">
+      <point x="-32.0" y="-15.0" />
+      <point x="430.52440476190475" y="400.0" />
+      <point x="402.31321428571425" y="400.0" />
+      <point x="-31.666666666666686" y="15.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="0.6895535596220311" x="445.62480947893454" y="289.62061905245906" />
+  <SelectedNodes>
+    <node>ui.Servlet</node>
+  </SelectedNodes>
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+
