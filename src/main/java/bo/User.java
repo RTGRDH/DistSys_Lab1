@@ -2,6 +2,7 @@ package bo;
 
 import db.DBUser;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class User {
@@ -17,6 +18,10 @@ public class User {
 
     public static User getUser(String username){
         return DBUser.getUser(username);
+    }
+
+    public static void createUser(String username, String password) throws SQLException {
+        DBUser.createUser(username, password);
     }
 
     public String getUsername(){

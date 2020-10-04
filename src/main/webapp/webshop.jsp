@@ -23,6 +23,10 @@
             session.setAttribute("username", user.getUsername());
         }
     }
+    if(request.getParameter("createUser") != null && request.getParameter("username") != "" && request.getParameter("password") != ""){
+        UserInfo newUser = new UserInfo(request.getParameter("username"), request.getParameter("password"));
+        UserHandler.createUser(newUser);
+    }
 %>
     <div class = "login">
         <form>
@@ -46,7 +50,7 @@
                 </tr>
                 <tr>
                     <td><button type="submit" name="login" value=" ">Login</button></td>
-                    <td><button type="submit" name=createUser" value=" ">Create User</button></td>
+                    <td><button type="submit" name="createUser" value=" ">Create User</button></td>
                 </tr>
                 </tbody>
             </table>

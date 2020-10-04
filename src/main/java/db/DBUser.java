@@ -5,7 +5,6 @@ import bo.User;
 import java.sql.*;
 
 public class DBUser extends bo.User{
-    private String database = "test_user";
 
     private DBUser(String username, String password) {
         super(username, password);
@@ -31,26 +30,16 @@ public class DBUser extends bo.User{
         return new DBUser(user, pass);
     }
 
-    public void createUser(String username, String password) throws SQLException {
+    public static void createUser(String username, String password) throws SQLException {
         Statement createUser = null;
         Connection con = null;
         try{
             con = DBManager.getConnection();
-            con.setAutoCommit(false);
-            if(username != null && password != null){
-                createUser = con.createStatement();
-                String query = "INSERT" +
-                        "INTO " + database + ".user(username, password)" +
-                        "VALUES('"+ username + "', '" + password + "')";
-                createUser.executeQuery(query);
-                con.setAutoCommit(true);
-            }
-        }catch(Exception e){
+            createUser = con.createStatement();
+            String q = "INSERT INTO test_user.user(username, password) VALUES('" + username +"', '" + password + "')";
+            createUser.executeUpdate(q);
+        }catch(SQLException e) {
             e.printStackTrace();
-        }finally{
-            if(con != null){
-                con.close();
-            }
         }
     }
 }
