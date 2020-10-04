@@ -30,23 +30,28 @@
 
     }
 else {%>
-<form method="post" action="index.jsp">
+<form action='/hemsida' method='GET'>
+    <b>Username:</b><input type='text' name='userName' >Name</input>
+    <button name='getUser' value=' '>Search</button>
+</form>
+<%}%>
+<form method="GET" action="/hemsida">
+    <label>You are logged in as: ${username}</label>
     <table border="3">
         <tbody>
         <tr>
             <td>Username</td>
-            <td><input type="text" name="userName" value=""></td>
+            <td><input type="text" name="username" value=""></td>
         </tr>
         <tr>
             <td>Password</td>
             <td><input type="password" name="password" value=""></td>
         </tr>
         <tr>
-            <td><input type="submit" value="Login"></td>
+            <td><button type="submit" value=" ">Login</button></td>
         </tr>
         </tbody>
     </table>
 </form>
-<%}%>
 </body>
 </html>

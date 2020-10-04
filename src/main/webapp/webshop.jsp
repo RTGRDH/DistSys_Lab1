@@ -12,14 +12,18 @@
     <link rel="stylesheet" href="main.css">
 </head>
 <body>
-You are logged in as: ${username}
-<form action='/hemsida' method='GET'>
-    <b>User:</b><input type='text' name='name' >Name</input>
-    <button name='getUser' value=' '>Search</button>
-</form>
+    <div class = "login">
+        <label>You are logged in as: ${username}</label>
+        <form action='/hemsida' method='GET'>
+            <b>Username:</b><input type='text' name='userName' >Name</input>
+            <button name='getUser' value=' '>Search</button>
+        </form>
+    </div>
+    <div class="items">
 <%
     for(int i = 0; i < ItemHandler.getItems().size(); i++)
     {%>
+
         <form action ="/hemsida" method='POST'>
             <table border="3">
                 <tbody>
@@ -42,19 +46,23 @@ You are logged in as: ${username}
                     }%>
                 </tr>
             </table>
+        </form>
             <%
     }
     %>
-            <fieldset>
-                <legend>Shopping cart</legend>
-                <%
-                for(int i = 0; i < CartHandler.getCart("test").getItems().size(); i++)
-                {%>
-                <tr>
-                    <td><%=CartHandler.getCart("test").getItems().get(i).getName()%></td>
-                </tr>
+    </div>
+            <div class="shoppingCart">
+                <fieldset>
+                    <legend>Shopping cart</legend>
                     <%
-                }%>
-            </fieldset>
+                    for(int i = 0; i < CartHandler.getCart("test").getItems().size(); i++)
+                    {%>
+                    <tr>
+                        <td><%=CartHandler.getCart("test").getItems().get(i).getName()%></td>
+                    </tr>
+                        <%
+                    }%>
+                </fieldset>
+            </div>
 </body>
 </html>
